@@ -20,7 +20,7 @@ approve_job:
   stage: merge
   script:
     - echo "Checking user approval..."
-    - if [[ "$GITLAB_USER_LOGIN" != "necto12338" ]]; then exit 1; fi
+    - if [[ "$GITLAB_USER_LOGIN" != "necto128" ]]; then exit 1; fi
     - echo "User approved the merge."
 
 # Настройка правил выполнения этапов на основе событий
