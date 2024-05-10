@@ -1,0 +1,15 @@
+# Определение этапов (stages)
+stages:
+  - build
+  - test
+  - merge
+
+# Задачи сборки, тестирования и другие этапы...
+
+# Этап слияния
+merge_job:
+  stage: merge
+  script:
+    - echo "Checking review status..."
+    - if [[ "$REVIEW_STATUS" != "approved" ]]; then exit 1; fi
+    - echo "Merging changes..."
