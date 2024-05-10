@@ -1,0 +1,19 @@
+name: main22
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+     branches:
+      - dev
+
+  fork:
+    stages:
+    - check
+    mr description check:
+      stage: check
+      script:
+        - if [ -z "$CI_COMMIT_MESSAGE" ]; then echo "MR description is empty." && exit 1; fi
+      rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
