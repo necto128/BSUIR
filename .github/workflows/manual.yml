@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Check user approval
       run: |
-        if [[ "${{ github.actor }}" != "necto128" ]]; then
+        if [[ "${{ github.actor }}" != "necto12118" ]]; then
           echo "User not authorized to run this workflow."
           exit 1
         fi
