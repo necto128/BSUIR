@@ -1,0 +1,24 @@
+name: Manual workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check user approval
+      run: |
+        if [[ "${{ github.actor }}" != "necto128" ]]; then
+          echo "User not authorized to run this workflow."
+          exit 1
+        fi
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.name }}"
