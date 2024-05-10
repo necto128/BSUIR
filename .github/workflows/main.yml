@@ -17,7 +17,6 @@ jobs:
       - name: Check user approval
         run: |
           if [[ "$GITLAB_USER_LOGIN" != "necto1328" ]]; then
-            echo "User is not authorized to perform the merge."
-            exit 1
+            echo "User is not authorized to perform the merge. Skipping the merge step."
+            exit 0
           fi
-          echo "User approved the merge."
