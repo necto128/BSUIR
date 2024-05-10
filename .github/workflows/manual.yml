@@ -1,13 +1,10 @@
 name: Manual workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        default: 'World'
-        required: true
-        type: string
+  merge:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   greet:
@@ -16,5 +13,7 @@ jobs:
     steps:
     - name: Check user approval
       run: |
-        echo "Merge is not allowed in this workflow."
-        exit 1
+        if [[ "${{ github.actor }}" != "necto128" ]]; then
+          echo "User not authorized to run this workflow."
+          exit 1
+        fi
